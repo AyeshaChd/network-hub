@@ -1,23 +1,25 @@
 const express = require("express");
 const app=express();
-// server responsing to request
-// app.use("/hello/2",(req,res)=>
-// {
-//     res.send("lets start /hello/2");
-// })
-// app.use("/hello",(req,res)=>
-// {
-//     res.send("lets start node hello");
-// })
 
-app.use("/hello",(req,res)=>
-{
-    res.send("lets start/hello123");
+// using get HTTP method
+app.get("/user",(req,res)=>{
+    res.send("read data successfully from the DB")
 })
-app.use("/",(req,res)=>
-{
-    res.send("lets start slash");
+// using post HTTP method
+app.post("/user",(req,res)=>{
+    res.send(" save  data successfully to the DB")
 })
+
+// using delete HTTP method
+app.delete("/user",(req,res)=>{
+    res.send(" delete  data successfully from the DB")
+})
+// this response to all the HTTP method  API calls
+app.use("/user",(req,res)=>
+{
+    res.send("hello from the user");
+})
+
 
 
 // server is listening
