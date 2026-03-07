@@ -24,6 +24,9 @@ difference between caret ^ and tilde ~.
 -----------------------------------------------
 - install postman and make workplace/ collection > make API calls
 - write logic to handle different HTTP methods GET,POST ,DELETE etc
+- explore routing and use of + ,* ,() ,? in routing
+- use of regex in routes /a/ , /.*fly$/.
+- how to read query params and how to do dynamic routing.
 
 
 

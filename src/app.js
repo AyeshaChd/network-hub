@@ -2,23 +2,15 @@ const express = require("express");
 const app=express();
 
 // using get HTTP method
-app.get("/user",(req,res)=>{
-    res.send("read data successfully from the DB")
-})
-// using post HTTP method
-app.post("/user",(req,res)=>{
-    res.send(" save  data successfully to the DB")
-})
+app.get("/user/:userId", (req, res) => {
+  console.log(req.params);
+    res.send("This matches both /abc and /ac");
+});
+// app.use("/abc", (req, res) => {
+//     res.send("This matches ");
+// });
 
-// using delete HTTP method
-app.delete("/user",(req,res)=>{
-    res.send(" delete  data successfully from the DB")
-})
-// this response to all the HTTP method  API calls
-app.use("/user",(req,res)=>
-{
-    res.send("hello from the user");
-})
+
 
 
 
