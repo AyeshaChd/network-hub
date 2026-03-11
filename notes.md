@@ -37,4 +37,5 @@ play with next function and errors along with res.send();
 - difference between app.use and app.all
 - make a dummy auth middleware  for admin
 - make a dummy auth middleware for all user routes except /user/login 
-
+- error handling using wildcarD AS  app.use("/",(error,req,res,next)=>{})
+        
