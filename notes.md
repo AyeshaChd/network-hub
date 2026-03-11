@@ -28,5 +28,13 @@ difference between caret ^ and tilde ~.
 - use of regex in routes /a/ , /.*fly$/.
 - how to read query params and how to do dynamic routing.
 
-
+- Multiple route handlers and play with the code.
+- next()
+play with next function and errors along with res.send();
+- app.use("/route",rH1,rH2,rH3,[rH4,rH5],rH6)
+- what is middleware?
+- how express handles the request behind the scenes.
+- difference between app.use and app.all
+- make a dummy auth middleware  for admin
+- make a dummy auth middleware for all user routes except /user/login 
 

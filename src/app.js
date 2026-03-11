@@ -1,14 +1,27 @@
 const express = require("express");
 const app=express();
+// writing a auth middleware for all admin routes
+ const {adminAuth,userAuth }=require("./middlewares/auth")
+console.log("file executetd");
 
-// using get HTTP method
-app.get("/user/:userId", (req, res) => {
-  console.log(req.params);
-    res.send("This matches both /abc and /ac");
-});
-// app.use("/abc", (req, res) => {
-//     res.send("This matches ");
-// });
+app.use("/admin", adminAuth);
+app.get("/admin/getAllData", (req,res,)=>
+{
+  console.log(" get all data api is executed");
+  res.send("all data is sent succsessfully");
+})
+app.get("/admin/deleteuser",(req,res,)=>
+{
+ console.log(" delete user api is executed");
+  res.send("user id deleted");
+
+})
+app.use("/user",userAuth,(req,res,)=>
+{
+  console.log(" print from handler 1");
+   res.send("user has logged in");
+
+})
 
 
 
@@ -20,4 +33,4 @@ app.listen(3000,()=>
 {
     console.log("server is listening");
 })
-
+module.exports={app}
