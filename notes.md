@@ -38,4 +38,16 @@ play with next function and errors along with res.send();
 - make a dummy auth middleware  for admin
 - make a dummy auth middleware for all user routes except /user/login 
 - error handling using wildcarD AS  app.use("/",(error,req,res,next)=>{})
+
+- make ur free db on official website of mongodb (mongobd atlas)
+- install the mongoose library to connect  ur appllication to DB.
+- connect ur application to DB via "connection url of cluster/BD name"
+- call ur connectDB function to connect to db before u start ur application on port 3000 means before starting ur server.
+
+
+- create a user schemma and user model inside models folder inside src folder
+- create a POST api to send data to db
+- put documents to db by making api calls from postman
+- error handling by try catch in  POST api
+
         

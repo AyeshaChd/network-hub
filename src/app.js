@@ -1,37 +1,52 @@
 const express = require("express");
 const app=express();
-// writing a auth middleware for all admin routes
- const {adminAuth,userAuth }=require("./middlewares/auth")
+require("./config/database");
+const {connectDB }=require("./config/database")
+const {User}= require("./config/models/admin")
 
- app.use("/user",(req,res)=>{
-  // try{
-    //logic for DB call and get data
-    throw new Error("jfasjdfjajfklsd");
-  // }
-  // catch(err)
-  // {
-  //   res.status(500).send("some technical issue contact tech team");
-  // }
- })
- // wildcard error handling
-
- app.use("/",(err,req,res,next)=>
- {
-if(err)
+// creating a post api to put data to db
+app.post("/signup",async(req,res)=>
 {
-  // log ur error
-  res.status(401).send("something went wrong");
+    //creating an instance of user model
+const user = new User({
+    firstName:"Ayesha",
+    lastName:"kanwal",
+    emailId:"ayeshakanwal@gmail.com",
+    phoneNo:"21324324"
+})
+
+try{
+// saving this instance to db
+user.save();
+res.send("user added succesfully");
 }
- })
+catch(err)
+{
+    res.status(404).send("Error while saving the user"+ err.message);
+}
+})
+ 
 
 
 
 
-
-// server is listening
-app.listen(3000,()=>
+connectDB()
+// managing happy case when got result
+.then(()=>
+{
+    console.log("succesfully connected to db");
+    // server is listening
+    app.listen(3000,()=>
 
 {
     console.log("server is listening");
 })
+})
+// managing bad case
+.catch((error)=>
+{
+    console.log("could not be connected /establised to db");
+})
+
+
 module.exports={app}
