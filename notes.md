@@ -50,4 +50,7 @@ play with next function and errors along with res.send();
 - put documents to db by making api calls from postman
 - error handling by try catch in  POST api
 
+- JSON object vs JS object (differece)
+- add express.json middle into ur APP
+- make the dynamic signUP api to get data from the end user.
         

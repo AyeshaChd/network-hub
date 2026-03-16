@@ -5,15 +5,13 @@ const {connectDB }=require("./config/database")
 const {User}= require("./config/models/admin")
 
 // creating a post api to put data to db
+// adding middleware to convert json into object
+app.use(express.json());
 app.post("/signup",async(req,res)=>
 {
     //creating an instance of user model
-const user = new User({
-    firstName:"Ayesha",
-    lastName:"kanwal",
-    emailId:"ayeshakanwal@gmail.com",
-    phoneNo:"21324324"
-})
+const user = new User(req.body);
+
 
 try{
 // saving this instance to db
