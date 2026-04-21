@@ -9,7 +9,7 @@ const {User}= require("./config/models/user")
 // adding middleware to convert json into object
 app.use(express.json());
 app.post("/signup",async(req,res)=>
-{
+{  
     //creating an instance of user model
 const user =  new User(req.body);
 
@@ -21,7 +21,7 @@ res.send("user added succesfully");
 }
 catch(err)
 {
-    res.status(404).send("Error while saving the user.   "+ err.message);
+    res.status(404).send("Error while saving the user."+ err.message);
 }
 })
 

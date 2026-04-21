@@ -67,5 +67,9 @@ play with next function and errors along with res.send();
 - Add timestamps in userSchemma.
 - add api validations on patch request and signup put request api
 -  Data Sanitizaton - put validations on each field before sending data into DB
+- install npm package validator
+- explore validation functions on emailId, Photo URL , Password etc
+- never trust the req.body ,always keep valiations
+
 
         

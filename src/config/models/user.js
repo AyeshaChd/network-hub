@@ -1,9 +1,11 @@
 const mongoose= require("mongoose");
+const validator=require("validator")
 const userSchemma=  new mongoose.Schema({
     firstName : {
         type: String,
          required:true,
          maxlength:15,
+       
     },
     lastName : {
         type: String,
@@ -16,12 +18,26 @@ const userSchemma=  new mongoose.Schema({
         lowercase: true,
         trim :true,
         required:true,
+        validate(value)
+        {
+            if(!validator.isEmail(value))
+            {
+                throw new Error("email is not valid " + value)
+            }
+        }
        
     },
     password :
     {
         type : String,
         required :true,
+         validate(value)
+        {
+            if(!validator.isStrongPassword(value))
+            {
+                throw new Error("Password is not strong " + value);
+            }
+        }
         
     },
     phoneNo :
@@ -47,13 +63,24 @@ const userSchemma=  new mongoose.Schema({
             }
         }
     },
+    photoUrl :
+    {
+        type : String,
+         validate(value)
+        {
+            if(!validator.isURL(value))
+            {
+                throw new Error("Photo url is not valid")+ value;
+            }
+        }
+    },
     about :{
       type: String,
       default : "this is the default of about",
     },
     skills :
     {
-        type : [String],
+        type : [String],  
     }
 },{
     timestamps:true,
