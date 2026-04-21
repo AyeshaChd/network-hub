@@ -65,5 +65,7 @@ play with next function and errors along with res.send();
 - put custom validation function on gender
 - improve DB schemma , put appropriate validation functions on each field in schemma
 - Add timestamps in userSchemma.
+- add api validations on patch request and signup put request api
+-  Data Sanitizaton - put validations on each field before sending data into DB
 
         

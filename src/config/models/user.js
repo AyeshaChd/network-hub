@@ -3,24 +3,38 @@ const userSchemma=  new mongoose.Schema({
     firstName : {
         type: String,
          required:true,
+         maxlength:15,
     },
     lastName : {
-        type: String
+        type: String,
+        maxlength:15,
     },
     emailId :
     {
         type:String,
         unique:true, 
         lowercase: true,
+        trim :true,
+        required:true,
        
+    },
+    password :
+    {
+        type : String,
+        required :true,
+        
     },
     phoneNo :
     {
-        type:Number
+        type:Number,
+        min:11,
+        max:11
     },
     age :
     {
-        type : Number
+        type : Number,
+        min:18,
+
     },
     gender :
     {

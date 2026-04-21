@@ -49,9 +49,9 @@ app.get("/feed",async(req,res)=>
     try {
         const users=await User.find({});
         res.send(users);
+  
 
-
-        
+  
     }
     catch(error)
     {
@@ -61,14 +61,24 @@ app.get("/feed",async(req,res)=>
 })
 
 // creating an api to update the user
-app.patch("/user", async(req,res)=>
+app.patch("/user/:userId", async(req,res)=>
 {
-    const userId = req.body.userId;
+     const userId= req.params?.userId
+   
     const data= req.body;
 
 
     try{
+        const ALLOWED_UPDATES =[
+         "photoUrl","about","age","gender","skills"
+        ]
+        const isUpdateAllowed = Object.keys(data).every((k)=> ALLOWED_UPDATES.includes(k))
+        if(!isUpdateAllowed)
+        {
+            throw new Error("update failed ,some fields are not allowed to update")
+        }
         const user = await User.findByIdAndUpdate({ _id :userId},data,{returnDocument:"before",runValidators:true})
+        
         
         console.log(user);
         res.send("updated successfully")
