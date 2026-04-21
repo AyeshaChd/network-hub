@@ -53,4 +53,17 @@ play with next function and errors along with res.send();
 - JSON object vs JS object (differece)
 - add express.json middle into ur APP
 - make the dynamic signUP api to get data from the end user.
+- get api  / to get user by id
+- get api  for feed /feed to get all the users
+- create a delete user api
+- API  to update the user 
+- difference between the put and patch api
+- explore the documentation of mongoose api
+- explore the schemmatype options from the moongoose declaration
+    - required,unique ,trim ,lowercase,min,minlength etc
+- add default
+- put custom validation function on gender
+- improve DB schemma , put appropriate validation functions on each field in schemma
+- Add timestamps in userSchemma.
+
         
