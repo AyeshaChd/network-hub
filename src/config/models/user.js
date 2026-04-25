@@ -1,5 +1,7 @@
 const mongoose= require("mongoose");
 const validator=require("validator")
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 const userSchemma=  new mongoose.Schema({
     firstName : {
         type: String,
@@ -31,13 +33,13 @@ const userSchemma=  new mongoose.Schema({
     {
         type : String,
         required :true,
-         validate(value)
-        {
-            if(!validator.isStrongPassword(value))
-            {
-                throw new Error("Password is not strong " + value);
-            }
-        }
+        //  validate(value)
+        // {
+        //     if(!validator.isStrongPassword(value))
+        //     {
+        //         throw new Error("Password is not strong " + value);
+        //     }
+        // }
         
     },
     phoneNo :
@@ -86,5 +88,22 @@ const userSchemma=  new mongoose.Schema({
     timestamps:true,
 })
 
+
+userSchemma.methods.getJWT= async function() // if we will use here an arrow function then it will break
+// bcz 'this' keyword does not work in arrow function
+{
+    const user= this
+  const token =   jwt.sign({ _id: user._id }, 'decTinder@123',{expiresIn: "7d"});
+ 
+        return token
+           
+}
+userSchemma.methods.validPassword= async function(passwordInputByUser)
+{   
+    const user= this
+    const passwordHash=user.password;
+    const isvalidPassword =   await bcrypt.compare(passwordInputByUser , passwordHash)
+      return isvalidPassword 
+}
 const User =mongoose.model("User" , userSchemma)
 module.exports={User};

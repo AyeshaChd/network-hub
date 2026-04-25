@@ -71,5 +71,21 @@ play with next function and errors along with res.send();
 - explore validation functions on emailId, Photo URL , Password etc
 - never trust the req.body ,always keep valiations
 
+    ------ flow of  data while sign Up
+- in post api first validate the signUp data by making a separate helper func and use validator package
+- then install bcrypt package to encrypt the password to make it unreadable
+- Create the passwordHash using bcrypt.hash and save the user with encrypted password
+-  create login api
+- compare password by bcrypt for valid email and password
 
+/// authentication by jwt token in a cookie
+- install cookie-parser
+- send a dummy cookie  to user 
+- create a /profile api and check wether u get abck the cookie
+- install jesonwebtoken 
+- IN login api after the validation by emailID and password ,create a JWT token and send it to the user
+- IN profile api,  read the cookie  and find the logged in user.
+- userAuth middleware
+- add userAuth middleware in Profile ans sendConnectionRequet api.
+- set the expiry of jwt token and cookies to 7 days
         
